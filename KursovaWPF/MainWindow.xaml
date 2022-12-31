@@ -1,0 +1,21 @@
+﻿<Window x:Class="KursovaWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KursovaWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="500"
+        FontFamily="Arial" FontSize="18" Background="LightSlateGray" WindowStartupLocation="CenterScreen">
+    <Grid Margin="80,20,80,20" Background="IndianRed">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Button Grid.Row="0" Margin="50" Click="Recepts_View">Перегляд рецептів</Button>
+        <Button Grid.Row="1" Margin="25" Click="Recepts_Create">Створення рецептів</Button>
+        <Button Grid.Row="2" Margin="25" Click="Recepts_Edit">Видалення/зміна рецептів</Button>
+    </Grid>
+</Window>

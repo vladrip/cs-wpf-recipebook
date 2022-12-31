@@ -1,0 +1,57 @@
+﻿<Window x:Class="KursovaWPF.RecipeViews.RecipeCreator"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KursovaWPF.RecipeViews"
+        mc:Ignorable="d"
+        Title="RecipeCreator" Height="450" Width="800"
+        FontSize="18" WindowStartupLocation="CenterScreen">
+    <Grid Name="mainGrid" Margin="10" Background="IndianRed">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Margin="5">
+            <TextBlock>Ім'я: </TextBlock>
+            <TextBox Name="name" FontSize="14" Height="25"></TextBox>
+
+            <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
+                <TextBlock>Кухня:</TextBlock>
+                <ComboBox Name="cuisine" Width="120" FontSize="16"></ComboBox>
+                <Separator Width="20" Visibility="Hidden"/>
+                <TextBlock>Тип страви:</TextBlock>
+                <ComboBox Name="mealType" Width="90" FontSize="16"></ComboBox>
+            </StackPanel>
+        </StackPanel>
+
+        <DockPanel Grid.Column="1" Margin="5">
+            <TextBlock DockPanel.Dock="Top">Компоненти:</TextBlock>
+            <TextBox Name="components" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" FontSize="14"></TextBox>
+        </DockPanel>
+
+        <DockPanel Grid.Row="1" Grid.RowSpan="2" Margin="5">
+            <TextBlock DockPanel.Dock="Top">Кроки приготування:</TextBlock>
+            <TextBox Name="steps" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" FontSize="14"></TextBox>
+        </DockPanel>
+
+        <DockPanel Grid.Row="1" Grid.Column="1" Grid.RowSpan="3">
+            <Button DockPanel.Dock="Top" Margin="80,0,80,0" BorderThickness="2" Click="Open_Image">Відкрити зображення</Button>
+            <Image Name="recipeImg" Margin="5" Grid.RowSpan="3"></Image>
+        </DockPanel>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="5">
+            <Button BorderThickness="2" Click="Btn_Clear">Очистити</Button>
+            <TextBlock Name="errMsg" Width="128" TextWrapping="Wrap" FontSize="12" Margin="5,0,5,0"></TextBlock>
+            <Button Width="150" BorderThickness="2" Click="Btn_Add">Додати рецепт</Button>
+        </StackPanel>
+        
+    </Grid>
+</Window>

@@ -1,0 +1,97 @@
+﻿<Window x:Class="KursovaWPF.RecipeViews.RecipeViewer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KursovaWPF.RecipeViews"
+        mc:Ignorable="d"
+        Title="RecipeViewer" Height="600" Width="1100"
+        FontSize="15" BorderBrush="Black" BorderThickness="1" WindowStartupLocation="CenterScreen">
+    <!--<Window.Resources>
+        <Style TargetType="ScrollBar">
+            <Setter Property="Background" Value="IndianRed"/>
+            <Setter Property="BorderBrush" Value="IndianRed"/>
+        </Style>
+    </Window.Resources>-->
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.ColumnSpan="2" BorderThickness="0,0,0,1" BorderBrush="Black" Background="LightGray">
+            <WrapPanel x:Name="mealTypes" Orientation="Horizontal" Margin="2">
+                <TextBlock Foreground="#b51010">Тип страви:</TextBlock>
+                <CheckBox x:Name="allMealTypesCheck" Content="Всі" Margin="5" Click="Filter_MealType"></CheckBox>
+            </WrapPanel>
+        </Border>
+        <Border Grid.Row="1" Grid.ColumnSpan="2" BorderThickness="0,1,0,1" BorderBrush="Black" Background="LightGray">
+            <WrapPanel x:Name="cuisines" Orientation="Horizontal" Margin="2">
+                <TextBlock Foreground="#b51010">Кухня:</TextBlock>
+                <CheckBox x:Name="allCuisinesCheck" Content="Всі" Margin="5" Click="Filter_Cuisine"></CheckBox>
+            </WrapPanel>
+        </Border>
+
+        <Border Grid.Row="2" BorderBrush="Black" BorderThickness="1" Margin="-1"/>
+        <DockPanel Grid.Row="2" Background="#e3e3e3">
+            <Button DockPanel.Dock="Top" Foreground="#b51010" Margin="30,0,30,0" Click="search_Start">Найти по тексту:</Button>
+            <TextBox DockPanel.Dock="Top" Name="search" Background="IndianRed" LostFocus="search_Start"></TextBox>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+                <StackPanel x:Name="sideViewer">
+                </StackPanel>
+            </ScrollViewer>
+        </DockPanel>
+
+        <Grid x:Name="recipeGrid" Grid.Row="3" Grid.Column="1" Background="AliceBlue">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.75*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="1.3*"/>
+            </Grid.RowDefinitions>
+            
+            <Border BorderThickness="1" BorderBrush="IndianRed"/>
+            <Border Grid.Column="1" BorderThickness="1" BorderBrush="IndianRed"/>
+            <Border Grid.Row="1" BorderThickness="1" BorderBrush="IndianRed"/>
+            <Border Grid.Row="1" Grid.Column="1" BorderThickness="1" BorderBrush="IndianRed"/>
+
+            <StackPanel Margin="10">
+                <TextBlock Height="110" Name="name" FontSize="24" Foreground="Red" TextWrapping="Wrap"></TextBlock>
+                <StackPanel Height="35" Orientation="Horizontal">
+                    <TextBlock  FontSize="19" Foreground="#fa3c3c">Тип страви:</TextBlock>
+                    <Separator Width="15" Visibility="Hidden"/>
+                    <TextBlock Name="mealType" FontSize="18"></TextBlock>
+                </StackPanel>
+                <StackPanel Height="35" Orientation="Horizontal">
+                    <TextBlock  FontSize="19" Foreground="#fa3c3c">Кухня:</TextBlock>
+                    <Separator Width="15" Visibility="Hidden"/>
+                    <TextBlock Name="cuisine" FontSize="18"></TextBlock>
+                </StackPanel>
+            </StackPanel>
+            
+            <Image Grid.Row="1" Name="bigImg" Stretch="Fill"></Image>
+
+            <TextBlock Grid.Column="1" FontSize="22" Foreground="#fa3c3c" Margin="10">Компоненти:</TextBlock>
+            <Border Grid.Column="1" Margin="10,45,10,10" BorderBrush="Gray" BorderThickness="1">
+                <ScrollViewer>
+                    <TextBlock Name="components" FontSize="16" TextWrapping="Wrap"></TextBlock>
+                </ScrollViewer>
+            </Border>
+
+            <TextBlock Grid.Row="1" Grid.Column="1" FontSize="22" Foreground="#fa3c3c" Margin="10">Кроки приготування:</TextBlock>
+            <Border Grid.Row="1" Grid.Column="1" Margin="10,45,10,10" BorderBrush="Gray" BorderThickness="1">
+                <ScrollViewer>
+                    <TextBlock Name="steps" FontSize="16" TextWrapping="Wrap"></TextBlock>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>
